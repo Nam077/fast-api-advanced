@@ -1,4 +1,5 @@
 from pydantic import BaseModel
+from uuid import UUID
 
 class UserBase(BaseModel):
     username: str
@@ -6,8 +7,8 @@ class UserBase(BaseModel):
 class UserCreate(UserBase):
     password: str
 
-class User(UserBase):
-    id: int
+class UserResponse(UserBase):
+    id: UUID  # Đảm bảo đây là kiểu UUID
 
     class Config:
-        from_attributes = True  # Thay orm_mode thành from_attributes cho Pydantic v2
+        from_attributes = True
