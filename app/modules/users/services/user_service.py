@@ -1,6 +1,8 @@
+from uuid import UUID
+
 from sqlalchemy.orm import Session
 from app.modules.users.repositories.user_repository import UserRepository
-from app.modules.users.schemas.user_schema import UserCreate
+from app.modules.users.schemas.user_schema import UserCreate, UserResponse
 from app.core.security import security
 from app.modules.users.models.user_model import User
 from fastapi import HTTPException
@@ -18,7 +20,8 @@ class UserService:
         user = User(username=user_create.username, hashed_password=hashed_password)
         return self.user_repository.create(db, user)
 
-    def get_user_by_id(self, db: Session, id: int):
-        user = self.user_repository.get_by_id(db, id)
+    def get_user_by_id(self, db: Session, user_id: UUID):
+        user = self.user_repository.get_by_id(db, entity_id=user_id)
         if user is None:
             raise HTTPException(status_code=404, detail="User not found")
+        return user

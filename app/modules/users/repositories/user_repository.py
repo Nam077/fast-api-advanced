@@ -15,9 +15,9 @@ class UserRepository(BaseRepositoryInterface[User, UUID]):
         except SQLAlchemyError as e:
             raise HTTPException(status_code=500, detail=f"Database error: {str(e)}")
 
-    def get_by_id(self, db: Session, id: UUID) -> Optional[User]:
+    def get_by_id(self, db: Session, entity_id: UUID) -> Optional[User]:
         try:
-            return db.query(User).filter(User.id == id).first()
+            return db.query(User).filter(User.id == entity_id).first()
         except SQLAlchemyError as e:
             raise HTTPException(status_code=500, detail=f"Database error: {str(e)}")
 

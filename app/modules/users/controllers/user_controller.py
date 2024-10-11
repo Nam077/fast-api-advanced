@@ -19,10 +19,9 @@ class UserController:
             return self.user_service.get_users(db)
 
         # find by id
-        @self.router.get("/users/{id:uuid}", response_model=UserResponse, description="Find user by id ok")
-        async def get_user_by_id(id: UUID, db: Session = Depends(database.get_db)):
-            return self.user_service.get_user_by_id(db, id)
-
+        @self.router.get("/users/{user_id}", response_model=UserResponse)
+        async def get_user_by_id(user_id: UUID, db: Session = Depends(database.get_db)):
+            return self.user_service.get_user_by_id(db, user_id)
 
         @self.router.post("/users/", response_model=UserResponse)
         async def create_user(user_create: UserCreate, db: Session = Depends(database.get_db)):

@@ -71,3 +71,6 @@ dmypy.json
 
 # VS Code specific files
 .vscode/
+
+# Jetbrains specific files
+.idea/
