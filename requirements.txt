@@ -1,0 +1,5 @@
+fastapi[standard]==0.115.0
+pydantic-settings==2.5.2
+alembic==1.13.3
+sqlalchemy==2.0.35
+passlib[bcrypt]==1.7.4
