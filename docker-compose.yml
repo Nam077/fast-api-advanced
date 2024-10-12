@@ -1,0 +1,22 @@
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: postgres_db_fastapi  # Tên container
+    environment:
+      POSTGRES_USER: nam077     # Tên người dùng PostgreSQL
+      POSTGRES_PASSWORD: nam077  # Mật khẩu cho người dùng
+      POSTGRES_DB: fast-api   # Tên cơ sở dữ liệu
+    ports:
+      - "5444:5432"  # Mở cổng để truy cập PostgreSQL từ ngoài container
+    volumes:
+      - postgres_data:/var/lib/postgresql/data  # Lưu trữ dữ liệu bên ngoài container
+    networks:
+      - app-network
+
+volumes:
+  postgres_data:
+
+networks:
+  app-network:
+    driver: bridge

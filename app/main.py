@@ -7,5 +7,5 @@ from app.core.db import database
 app = Application().get_app()
 
 # Tạo bảng trong cơ sở dữ liệu
-database.create_tables()
+# database.create_tables()
 

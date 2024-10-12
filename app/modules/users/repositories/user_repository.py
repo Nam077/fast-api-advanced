@@ -1,3 +1,4 @@
+from sqlalchemy import cast
 from sqlalchemy.orm import Session
 from sqlalchemy.exc import SQLAlchemyError
 from app.modules.users.models.user_model import User

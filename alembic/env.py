@@ -5,7 +5,8 @@ from alembic import context
 
 # Import Base và metadata từ các model SQLAlchemy của bạn
 from app.core.db import database  # Nơi định nghĩa Base
-from app.modules.users.models.user_model import User  # Import model User
+from app.modules.users.models.user_model import User
+from app.modules.keys.models.key_model import Key
 
 # Cấu hình Alembic
 config = context.config
@@ -16,6 +17,7 @@ if config.config_file_name is not None:
 
 # target_metadata sẽ trỏ tới metadata từ model của bạn
 target_metadata = database.Base.metadata
+
 
 def run_migrations_offline() -> None:
     """Thực hiện migration ở chế độ offline."""
